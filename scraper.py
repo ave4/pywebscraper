@@ -29,7 +29,8 @@ def parser_html(html):
             quotes_dict.append({
             'text': div.find(class_='text').text,
             'author': div.find(class_='author').text,
-            'tags': div.find(class_='tags').find(class_='keywords')['content']
+            'author_url': f'{base_url}{div.a.get('href')}',
+            'tags': div.find(class_='tags').find(class_='keywords').get('content')
         })
         return quotes_dict
     except Exception as e:
